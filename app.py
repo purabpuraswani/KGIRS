@@ -1,6 +1,5 @@
 """
 Virtual Laboratory Experiment 10: Query Knowledge Graphs Using Cypher
-Roll No.: 47
 
 Preserves the 4-Section Architecture:
   1. Theory: Understanding Knowledge Graphs & Cypher (Visual Conceptual Guide)
@@ -28,10 +27,9 @@ import cypher_engine as ce
 # ======================================================================================
 
 EXPERIMENT_CONFIG = {
-    "title": "Roll No. 47 / Experiment 10: Query Knowledge Graphs Using Cypher",
+    "title": "Experiment 10: Query Knowledge Graphs Using Cypher",
     "course": "Knowledge Engineering & Graph Databases",
     "experiment_no": "Experiment 10",
-    "roll_no": "Roll No. 47",
     "objectives": [
         "Retrieve entities (nodes) and their attributes from a knowledge graph using Cypher.",
         "Query direct semantic connections between entities via one-hop relationship traversal.",
@@ -214,7 +212,7 @@ def generate_pdf_report(student_name: str, student_id: str, date_str: str,
     pdf.cell(35, 5, "Student Roll / ID:", 0)
     pdf.set_font("Helvetica", "", 9)
     pdf.set_text_color(15, 23, 42)
-    pdf.cell(50, 5, student_id or "Roll No. 47", 1)
+    pdf.cell(50, 5, student_id or "N/A", 1)
 
     pdf.set_xy(14, 34)
     pdf.set_font("Helvetica", "B", 9)
@@ -2099,7 +2097,7 @@ def render_report_section():
     with col1:
         student_name = st.text_input("Student Name", value=st.session_state["student_info"].get("name", "Student Name"))
     with col2:
-        student_id = st.text_input("Student Roll / ID", value=st.session_state["student_info"].get("id", "Roll No. 47"))
+        student_id = st.text_input("Student Roll / ID", value=st.session_state["student_info"].get("id", ""))
     with col3:
         lab_date = st.date_input("Experiment Date", value=datetime.now())
 
@@ -2190,7 +2188,7 @@ def init_session_state():
     if "student_info" not in st.session_state:
         st.session_state["student_info"] = {
             "name": "Student Name",
-            "id": "Roll No. 47",
+            "id": "",
             "date": str(datetime.now().date())
         }
     if "student_notes" not in st.session_state:
